@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Little Surprise ❤️</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    background: #050105;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   SCREEN SYSTEM
+========================= */
+
+.screen {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition: opacity 0.8s ease;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* =========================
+   START SCREEN
+========================= */
+
+#startScreen {
+
+    background:
+        radial-gradient(
+            circle at center,
+            #3a1028 0%,
+            #150710 45%,
+            #020102 100%
+        );
+}
+
+
+/* Center glow */
+
+#startScreen::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: #ff3d91;
+
+    filter: blur(180px);
+
+    opacity: 0.12;
+}
+
+
+/* =========================
+   HANGING HEARTS
+========================= */
+
+.hanging {
+    position: absolute;
+
+    top: 0;
+
+    width: 2px;
+
+    background:
+        linear-gradient(
+            #ff9fc2,
+            rgba(255,159,194,0)
+        );
+
+    animation: swing 3s ease-in-out infinite alternate;
+}
+
+.hanging::after {
+
+    content: "♡";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -35px;
+
+    transform: translateX(-50%);
+
+    color: #ff9fc2;
+
+    font-size: 60px;
+
+    text-shadow:
+        0 0 10px #ff4f9a,
+        0 0 30px #ff1f7a;
+}
+
+.h1 {
+    left: 10%;
+    height: 140px;
+}
+
+.h2 {
+    left: 28%;
+    height: 190px;
+    animation-delay: .5s;
+}
+
+.h3 {
+    left: 48%;
+    height: 120px;
+    animation-delay: 1s;
+}
+
+.h4 {
+    left: 68%;
+    height: 175px;
+    animation-delay: .3s;
+}
+
+.h5 {
+    left: 87%;
+    height: 135px;
+    animation-delay: .8s;
+}
+
+@keyframes swing {
+
+    from {
+        transform: rotate(-5deg);
+    }
+
+    to {
+        transform: rotate(5deg);
+    }
+}
+
+
+/* =========================
+   FALLING SPARKLES
+========================= */
+
+.sparkle {
+
+    position: absolute;
+
+    top: -30px;
+
+    color: #ffd0e2;
+
+    font-size: 22px;
+
+    text-shadow:
+        0 0 10px #ff4f9a;
+
+    animation:
+        fall 7s linear infinite;
+}
+
+.s1 {
+    left: 15%;
+}
+
+.s2 {
+    left: 25%;
+    animation-delay: 2s;
+}
+
+.s3 {
+    left: 40%;
+    animation-delay: 4s;
+}
+
+.s4 {
+    left: 55%;
+    animation-delay: 1s;
+}
+
+.s5 {
+    left: 70%;
+    animation-delay: 3s;
+}
+
+.s6 {
+    left: 85%;
+    animation-delay: 5s;
+}
+
+@keyframes fall {
+
+    0% {
+        transform:
+            translateY(-50px)
+            rotate(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   START CONTENT
+========================= */
+.start-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+
+    /* keeps everything nicely centered */
+    transform: translateY(-20px);
+
+    animation: appear 1.5s ease;
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.small-title {
+    color: #ff9fbe;
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+.start-content h1 {
+    color: white;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: normal;
+
+    /* Smaller and more balanced */
+    font-size: clamp(42px, 6vw, 72px);
+
+    line-height: 0.95;
+
+    text-shadow:
+        0 0 15px #ffb0ca,
+        0 0 40px #ff4f9a;
+}
+
+.start-content h1 span {
+
+    color: #ff8eb7;
+}
+
+.subtitle {
+    color: #dcb9ca;
+
+    font-size: 15px;
+
+    margin-top: 22px;
+
+    margin-bottom: 28px;
+}
+
+/* =========================
+   START BUTTON
+========================= */
+
+#startButton {
+    padding: 13px 36px;
+
+    border:
+        1px solid #ff8eb7;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,70,150,.08);
+
+    color: #ffc7da;
+
+    font-size: 15px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+#startButton:hover {
+
+    background: #ff76aa;
+
+    color: #18030d;
+
+    transform: scale(1.1);
+
+    box-shadow:
+        0 0 25px #ff4f9a,
+        0 0 60px #ff1f7a;
+}
+
+
+/* =========================
+   CALENDAR SCREEN
+========================= */
+
+#calendarScreen {
+
+    justify-content: flex-start;
+
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            #351026,
+            #11050d 55%,
+            #010101
+        );
+}
+
+
+/* =========================
+   CALENDAR
+========================= */
+
+.calendar-box {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: 550px;
+
+    max-width: 90vw;
+
+    margin-left: 8vw;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(20,5,15,.9);
+
+    border:
+        1px solid rgba(255,140,185,.4);
+
+    box-shadow:
+        0 0 50px rgba(255,50,140,.2);
+
+    text-align: center;
+}
+
+.calendar-label {
+
+    color: #ff9dbc;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 12px;
+}
+
+.calendar-box h1 {
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 45px;
+
+    font-weight: normal;
+
+    font-style: italic;
+}
+
+.calendar-box h1 span {
+
+    color: #ff82ad;
+}
+
+.calendar-info {
+
+    color: #cbaaba;
+
+    margin: 10px 0 25px;
+}
+
+
+/* Days */
+
+.weekdays {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    color: #ff8eb7;
+
+    font-size: 12px;
+
+    margin-bottom: 10px;
+}
+
+.days {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap: 7px;
+}
+
+.day {
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #dec9d4;
+
+    border-radius: 10px;
+}
+
+
+/* Special 17 */
+
+#specialDate {
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ff70a8,
+            #ad2258
+        );
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    box-shadow:
+        0 0 15px #ff4f9a,
+        0 0 35px #ff1f7a;
+
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.tap {
+
+    margin-top: 20px;
+
+    color: #c9a9ba;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   BALLOONS
+========================= */
+
+.balloon {
+
+    position: absolute;
+
+    bottom: -120px;
+
+    width: 55px;
+
+    height: 70px;
+
+    border-radius:
+        50%
+        50%
+        45%
+        45%;
+
+    animation:
+        rise 10s linear infinite;
+
+    z-index: 2;
+}
+
+.balloon::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 10px;
+    left: 12px;
+
+    width: 14px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.45);
+
+    transform: rotate(25deg);
+}
+
+.balloon::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -8px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 10px solid #ff70a8;
+}
+
+.string {
+
+    position: absolute;
+
+    top: 100%;
+
+    left: 50%;
+
+    width: 1px;
+
+    height: 150px;
+
+    background:
+        rgba(255,190,215,.6);
+}
+
+.pink {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ffd6e5,
+            #ff4f9a 55%,
+            #96194d
+        );
+}
+
+.purple {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #efd9ff,
+            #a45cff 55%,
+            #4d1b76
+        );
+}
+
+.white {
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            white,
+            #ffb7d3 55%,
+            #b64470
+        );
+}
+
+.b1 {
+    left: 60%;
+    animation-delay: -2s;
+}
+
+.b2 {
+    left: 72%;
+    animation-delay: -5s;
+}
+
+.b3 {
+    left: 84%;
+    animation-delay: -8s;
+}
+
+.b4 {
+    left: 92%;
+    animation-delay: -4s;
+}
+
+@keyframes rise {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .9;
+    }
+
+    50% {
+        transform:
+            translateY(-60vh)
+            translateX(30px)
+            rotate(5deg);
+    }
+
+    100% {
+        transform:
+            translateY(-125vh)
+            translateX(-20px)
+            rotate(-5deg);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   BIRTHDAY SCREEN
+========================= */
+
+#birthdayScreen {
+
+    background:
+        radial-gradient(
+            circle,
+            #3b1129,
+            #10040b 65%,
+            #000
+        );
+}
+
+.birthday-content {
+
+    text-align: center;
+
+    animation:
+        birthdayIn 1s ease;
+}
+
+@keyframes birthdayIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.birthday-small {
+
+    color: #ff9fbe;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+.birthday-content h1 {
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-style: italic;
+
+    font-weight: normal;
+
+    font-size: clamp(50px, 8vw, 85px);
+
+    margin: 10px 0;
+}
+
+.birthday-content h1 span {
+
+    color: #ff82ad;
+}
+
+.birthday-content h2 {
+
+    color: #ff9abb;
+
+    font-family: Georgia, serif;
+
+    font-weight: normal;
+
+    font-size: 22px;
+}
+
+<!-- =========================
+     BIRTHDAY SCREEN
+========================= -->
+<section id="birthdayEffects" class="screen">
+
+    <!-- Sparkles -->
+    <div class="birthday-sparkle s1">✦</div>
+    <div class="birthday-sparkle s2">✦</div>
+    <div class="birthday-sparkle s3">✧</div>
+    <div class="birthday-sparkle s4">✦</div>
+    <div class="birthday-sparkle s5">✧</div>
+
+    <!-- Floating hearts -->
+    <div class="birthday-heart bh1">♡</div>
+    <div class="birthday-heart bh2">♡</div>
+    <div class="birthday-heart bh3">♡</div>
+    <div class="birthday-heart bh4">♡</div>
+
+    <div class="birthday-content">
+
+        <p class="birthday-small">
+            ✦ TODAY IS YOUR SPECIAL DAY ✦
+        </p>
+
+        <h1>
+            Happy<br>
+            <span>Birthday</span>
+        </h1>
+
+        <div class="cake">
+            🎂
+        </div>
+
+        <p class="birthday-message">
+            To my lovable<br>
+            <strong>best bestest friend</strong> ❤️
+        </p>
+
+        <p class="birthday-sub">
+            A little surprise made just for you...
+        </p>
+
+        <button id="letterButton">
+            OPEN YOUR LETTER 💌
+        </button>
+
+    </div>
+
+</section>
+<!-- =========================
+     LETTER SCREEN
+========================= -->
+
+<section id="letterScreen" class="screen">
+
+    <div class="letter-sparkle ls1">✦</div>
+    <div class="letter-sparkle ls2">✧</div>
+    <div class="letter-sparkle ls3">✦</div>
+    <div class="letter-sparkle ls4">♡</div>
+
+    <div class="letter-content">
+
+        <p class="letter-small">
+            A LITTLE SOMETHING FROM MY HEART
+        </p>
+
+        <h1>
+            For You <span>♡</span>
+        </h1>
+
+        <!-- Envelope -->
+        <div id="envelope" class="envelope">
+
+            <div class="envelope-back"></div>
+
+            <div class="letter-paper">
+                <div class="paper-heart">♡</div>
+            </div>
+
+            <div class="envelope-front"></div>
+
+            <div class="envelope-flap"></div>
+
+            <div class="envelope-heart">
+                ♥
+            </div>
+
+        </div>
+
+        <p id="openText" class="open-text">
+            Tap the envelope 💌
+        </p>
+
+        <!-- Letter -->
+        <div id="messageBox" class="message-box">
+
+            <p id="typedMessage"></p>
+
+            <div id="signature" class="signature">
+                With lots of love,<br>
+                <span>♡ Me</span>
+            </div>
+
+            <button id="finalButton">
+                ONE LAST THING ✨
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+/* =========================
+   CAKE
+========================= */
+
+.cake {
+
+    position: relative;
+
+    width: 230px;
+
+    height: 180px;
+
+    margin: 20px auto;
+}
+
+.cake-bottom {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 25px;
+
+    width: 180px;
+
+    height: 65px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            #d94d82,
+            #762143
+        );
+}
+
+.cake-middle {
+
+    position: absolute;
+
+    bottom: 55px;
+
+    left: 35px;
+
+    width: 160px;
+
+    height: 55px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            #ff91b8,
+            #c52d6b
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-around;
+
+    color: white;
+}
+
+.cake-top {
+
+    position: absolute;
+
+    bottom: 100px;
+
+    left: 45px;
+
+    width: 140px;
+
+    height: 45px;
+
+    border-radius:
+        50%
+        50%
+        10px
+        10px;
+
+    background:
+        linear-gradient(
+            #ffdbe8,
+            #ff8bb5
+        );
+}
+
+
+/* Candles */
+
+.candle {
+
+    position: absolute;
+
+    bottom: 137px;
+
+    width: 12px;
+
+    height: 38px;
+
+    z-index: 3;
+
+    border-radius: 4px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            white 0 5px,
+            #ff62a0 5px 9px
+        );
+}
+
+.candle1 {
+    left: 72px;
+}
+
+.candle2 {
+    left: 109px;
+}
+
+.candle3 {
+    left: 146px;
+}
+
+.flame {
+
+    position: absolute;
+
+    top: -18px;
+
+    left: 50%;
+
+    width: 13px;
+
+    height: 19px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            white,
+            #ffd34f 40%,
+            #ff5733
+        );
+
+    box-shadow:
+        0 0 15px #ffb52c;
+
+    animation:
+        flame .7s infinite alternate;
+}
+
+@keyframes flame {
+
+    to {
+        transform:
+            translateX(-50%)
+            scale(1.2);
+    }
+}
+
+.birthday-text {
+
+    color: #dcbccc;
+
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+.birthday-text span {
+
+    color: #ff8eb5;
+}
+
+
+/* =========================
+   LETTER SCREEN
+========================= */
+
+#letterScreen {
+
+    background:
+        radial-gradient(
+            circle,
+            #351026,
+            #0d040a 65%,
+            #000
+        );
+}
+
+.letter {
+
+    width: 650px;
+
+    max-width: 90vw;
+
+    text-align: center;
+}
+
+.letter h1 {
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 50px;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    margin-bottom: 20px;
+}
+
+.letter h1 span {
+
+    color: #ff86b2;
+}
+
+.paper {
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(35,10,24,.9);
+
+    border:
+        1px solid rgba(255,150,190,.3);
+
+    color: #e4cbd6;
+
+    line-height: 1.8;
+
+    text-align: left;
+
+    box-shadow:
+        0 0 40px rgba(255,47,136,.2);
+}
+
+.paper p {
+
+    margin-bottom: 15px;
+}
+
+.paper .ending {
+
+    color: #ff9abb;
+
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+}
+
+.big-heart {
+
+    text-align: center;
+
+    color: #ff619f;
+
+    font-size: 60px;
+
+    animation:
+        heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+#lastButton {
+
+    margin-top: 25px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.nextButton {
+
+    padding: 14px 30px;
+
+    border:
+        1px solid #ff8eb7;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,70,150,.08);
+
+    color: #ffc4d8;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: .3s;
+}
+
+.nextButton:hover {
+
+    background: #ff70a8;
+
+    color: #18030d;
+
+    box-shadow:
+        0 0 30px #ff4f9a;
+
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   FINAL SCREEN
+========================= */
+
+#finalScreen {
+
+    background:
+        radial-gradient(
+            circle,
+            #3d102b,
+            #10040b 60%,
+            #000
+        );
+}
+
+.final {
+
+    text-align: center;
+}
+
+.final-heart {
+
+    font-size: 130px;
+
+    color: #ff609f;
+
+    text-shadow:
+        0 0 20px #ff4f9a,
+        0 0 60px #ff1f7a;
+
+    animation:
+        heartbeat 1s infinite;
+}
+
+.final p {
+
+    color: #dcb9ca;
+
+    font-size: 17px;
+
+    margin: 20px;
+}
+
+.final h1 {
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(35px, 6vw, 65px);
+
+    font-weight: normal;
+
+    font-style: italic;
+}
+
+.final h1 span {
+
+    color: #ff86b2;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    .calendar-box {
+
+        margin-left: 0;
+
+        width: 92vw;
+
+        padding: 22px;
+    }
+
+    .calendar-box h1 {
+        font-size: 35px;
+    }
+
+    .start-content h1 {
+        font-size: 60px;
+    }
+
+    .birthday-content h1 {
+        font-size: 50px;
+    }
+
+    .paper {
+        max-height: 55vh;
+        overflow-y: auto;
+    }
+
+}
+
+audio#bgMusic {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: fixed !important;
+    top: 20px !important;
+    left: 20px !important;
+    width: 300px !important;
+    height: 50px !important;
+    z-index: 99999 !important;
+}
+
+</style>
+
+</head>
+
+
+<  body>
+<audio id="bgMusic" controls preload="auto">
+    <source src="./belong together song.mp3" type="audio/mpeg">
+</audio>
+<button id="musicButton">🔇</button>
+<!-- =====================================================
+     SCREEN 1
+===================================================== -->
+
+<section id="startScreen" class="screen active">
+
+    <!-- Hanging hearts -->
+
+    <div class="hanging h1"></div>
+    <div class="hanging h2"></div>
+    <div class="hanging h3"></div>
+    <div class="hanging h4"></div>
+    <div class="hanging h5"></div>
+
+
+    <!-- Falling sparkles -->
+
+    <div class="sparkle s1">✦</div>
+    <div class="sparkle s2">✧</div>
+    <div class="sparkle s3">✦</div>
+    <div class="sparkle s4">✧</div>
+    <div class="sparkle s5">✦</div>
+    <div class="sparkle s6">✧</div>
+
+
+    <div class="start-content">
+
+        <div class="small-title">
+            I MADE SOMETHING FOR YOU
+        </div>
+
+        <h1>
+            A Little<br>
+            <span>Surprise</span>
+        </h1>
+
+        <div class="subtitle">
+            Something special is waiting for you...
+        </div>
+
+        <button id="startButton">
+            START ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SCREEN 2
+===================================================== -->
+
+<section id="calendarScreen" class="screen">
+
+
+    <!-- Balloons -->
+
+    <div class="balloon pink b1">
+        <div class="string"></div>
+    </div>
+
+    <div class="balloon purple b2">
+        <div class="string"></div>
+    </div>
+
+    <div class="balloon white b3">
+        <div class="string"></div>
+    </div>
+
+    <div class="balloon pink b4">
+        <div class="string"></div>
+    </div>
+
+
+    <!-- Calendar -->
+
+    <div class="calendar-box">
+
+        <div class="calendar-label">
+            ✦ A SPECIAL MONTH ✦
+        </div>
+
+        <h1>
+            August <span>2026</span>
+        </h1>
+
+        <div class="calendar-info">
+            There is one special date waiting for you...
+        </div>
+
+
+        <div class="weekdays">
+
+            <span>Sun</span>
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+
+        </div>
+
+
+        <div class="days">
+
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+
+            <div class="day">1</div>
+            <div class="day">2</div>
+            <div class="day">3</div>
+            <div class="day">4</div>
+            <div class="day">5</div>
+            <div class="day">6</div>
+            <div class="day">7</div>
+            <div class="day">8</div>
+            <div class="day">9</div>
+            <div class="day">10</div>
+            <div class="day">11</div>
+            <div class="day">12</div>
+            <div class="day">13</div>
+            <div class="day">14</div>
+            <div class="day">15</div>
+            <div class="day">16</div>
+
+            <button id="specialDate">
+                17
+            </button>
+
+            <div class="day">18</div>
+            <div class="day">19</div>
+            <div class="day">20</div>
+            <div class="day">21</div>
+            <div class="day">22</div>
+            <div class="day">23</div>
+            <div class="day">24</div>
+            <div class="day">25</div>
+            <div class="day">26</div>
+            <div class="day">27</div>
+            <div class="day">28</div>
+            <div class="day">29</div>
+            <div class="day">30</div>
+            <div class="day">31</div>
+
+        </div>
+
+
+        <div class="tap">
+            Tap the glowing date ♥
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SCREEN 3
+===================================================== -->
+
+<section id="birthdayScreen" class="screen">
+
+    <div class="birthday-content">
+
+        <div class="birthday-small">
+            ✦ TODAY IS YOUR SPECIAL DAY ✦
+        </div>
+
+        <h1>
+            Happy Birthday
+        </h1>
+
+        <h2>
+            My Lovable Bestest Friend ♥
+        </h2>
+
+
+        <div class="cake">
+
+            <div class="candle candle1">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle candle2">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle candle3">
+                <div class="flame"></div>
+            </div>
+
+            <div class="cake-top"></div>
+
+            <div class="cake-middle">
+                ♥ ♥ ♥
+            </div>
+
+            <div class="cake-bottom"></div>
+
+        </div>
+
+
+        <div class="birthday-text">
+
+            Today isn't just another day...<br>
+
+            It's a day worth celebrating because<br>
+
+            <span>you exist. ❤️</span>
+
+        </div>
+
+
+        <button
+            id="letterButton"
+            class="nextButton">
+
+            OPEN YOUR LETTER 💌
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SCREEN 4
+===================================================== -->
+
+<section id="letterScreen" class="screen">
+
+    <div class="letter">
+
+        <div class="calendar-label">
+            ✦ A LITTLE MESSAGE FOR YOU ✦
+        </div>
+
+        <h1>
+            To My
+            <span>Best Friend</span>
+        </h1>
+
+
+        <div class="paper">
+
+            <p>
+                Hey Vishalini❤️
+            </p>
+
+            <p>
+                On this special day, I just want you to know
+                how incredibly special you are to me.
+            </p>
+
+            <p>
+                Thank you for all the laughs, memories,
+                crazy moments and all the little things
+                that make our friendship so beautiful.
+            </p>
+
+            <p>
+                I hope this new year of your life brings you
+                everything your heart wishes for.
+            </p>
+
+            <p class="ending">
+                Happy Birthday, to my lovable bestest friend Vishalini !!! ❤️
+            </p>
+
+            <div class="big-heart">
+                ♥
+            </div>
+
+        </div>
+
+
+        <button
+            id="lastButton"
+            class="nextButton">
+
+            ONE LAST THING... ✨
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SCREEN 5
+===================================================== -->
+
+<section id="finalScreen" class="screen">
+
+    <div class="final">
+
+        <div class="final-heart">
+            ♥
+        </div>
+
+        <p>
+            Some people come into our lives...
+        </p>
+
+        <h1>
+            And make everything
+            <span>better.</span>
+        </h1>
+
+        <p>
+            I'm really lucky to have you. ❤️
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* =========================
+   GET SCREENS
+========================= */
+
+const startScreen =
+    document.getElementById("startScreen");
+
+const calendarScreen =
+    document.getElementById("calendarScreen");
+
+const birthdayScreen =
+    document.getElementById("birthdayScreen");
+
+const letterScreen =
+    document.getElementById("letterScreen");
+
+const finalScreen =
+    document.getElementById("finalScreen");
+
+
+/* =========================
+   SCREEN CHANGE
+========================= */
+
+function showScreen(screen) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(function(s) {
+
+            s.classList.remove("active");
+
+        });
+
+    screen.classList.add("active");
+}
+
+
+/* =========================
+   START
+========================= */
+
+document
+    .getElementById("startButton")
+    .addEventListener("click", function() {
+
+        showScreen(calendarScreen);
+
+    });
+
+
+/* =========================
+   DATE 17
+========================= */
+
+document
+    .getElementById("specialDate")
+    .addEventListener("click", function() {
+
+        this.style.transform = "scale(1.5)";
+
+        setTimeout(function() {
+
+            showScreen(birthdayScreen);
+
+        }, 700);
+
+    });
+
+
+/* =========================
+   LETTER
+========================= */
+
+document
+    .getElementById("letterButton")
+    .addEventListener("click", function() {
+
+        showScreen(letterScreen);
+
+    });
+
+
+/* =========================
+   FINAL
+========================= */
+
+document
+    .getElementById("lastButton")
+    .addEventListener("click", function() {
+
+        showScreen(finalScreen);
+
+    });
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1962 @@
+/* =====================================================
+   BASIC RESET
+===================================================== */
+body {
+    background: red !important;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    font-family: Arial, sans-serif;
+
+    background: #000;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   ALL SCREENS
+===================================================== */
+
+.screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+
+.screen.active {
+
+    visibility: visible;
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* =====================================================
+   SCREEN 1
+===================================================== */
+
+#startScreen {
+
+    background:
+        radial-gradient(
+            circle at center,
+            #260c1b,
+            #10050c 45%,
+            #020102 100%
+        );
+}
+
+
+/* Center glow */
+
+#startScreen::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: #ff4f9a;
+
+    filter: blur(170px);
+
+    opacity: .12;
+}
+
+
+/* Opening content */
+
+.opening-content {
+
+    position: relative;
+
+    z-index: 10;
+
+    text-align: center;
+
+    animation: appear 1.5s ease;
+}
+
+
+@keyframes appear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(.9);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+.little-text {
+
+    margin-bottom: 20px;
+
+    color: #ff9cbd;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+}
+
+
+.opening-content h1 {
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size:
+        clamp(55px, 9vw, 110px);
+
+    line-height: .95;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    text-shadow:
+        0 0 15px #ffabc9,
+        0 0 35px #ff4f9a,
+        0 0 70px #ff1f7a;
+}
+
+
+.opening-content h1 span {
+
+    color: #ff91bb;
+}
+
+
+.opening-message {
+
+    margin-top: 25px;
+
+    margin-bottom: 35px;
+
+    color: #dcb8c9;
+
+    font-size: 16px;
+}
+
+
+/* Start button */
+
+#startButton {
+
+    padding:
+        15px
+        40px;
+
+    border:
+        1px solid #ff8eb5;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,60,140,.08);
+
+    color: #ffc2d8;
+
+    font-size: 16px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+
+    box-shadow:
+        0 0 15px rgba(255,60,140,.15);
+}
+
+
+#startButton:hover {
+
+    background: #ff76aa;
+
+    color: #16030c;
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 20px #ff4f9a,
+        0 0 50px #ff1f7a;
+}
+
+
+/* =====================================================
+   HANGING HEARTS
+===================================================== */
+
+.hanging-heart {
+
+    position: absolute;
+
+    top: 0;
+
+    width: 2px;
+
+    height: 150px;
+
+    background:
+        linear-gradient(
+            #ff9fc1,
+            rgba(255,159,193,.1)
+        );
+
+    z-index: 2;
+
+    animation:
+        swing 3s ease-in-out infinite alternate;
+}
+
+
+.hanging-heart span {
+
+    position: absolute;
+
+    bottom: -30px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #ff9fc1;
+
+    font-size: 58px;
+
+    text-shadow:
+        0 0 10px #ff4f9a,
+        0 0 30px #ff1f7a;
+}
+
+
+.heart-1 {
+    left: 10%;
+    height: 130px;
+}
+
+
+.heart-2 {
+    left: 28%;
+    height: 180px;
+    animation-delay: .5s;
+}
+
+
+.heart-3 {
+    left: 47%;
+    height: 110px;
+    animation-delay: 1s;
+}
+
+
+.heart-4 {
+    left: 68%;
+    height: 170px;
+    animation-delay: .2s;
+}
+
+
+.heart-5 {
+    left: 86%;
+    height: 125px;
+    animation-delay: .8s;
+}
+
+
+@keyframes swing {
+
+    from {
+        transform: rotate(-5deg);
+    }
+
+    to {
+        transform: rotate(5deg);
+    }
+}
+
+
+/* =====================================================
+   FALLING SPARKLES
+===================================================== */
+
+.sparkle {
+
+    position: absolute;
+
+    top: -50px;
+
+    color: #ffc0d8;
+
+    font-size: 20px;
+
+    text-shadow:
+        0 0 10px #ff4f9a;
+
+    animation:
+        sparkleFall
+        var(--speed)
+        linear infinite;
+}
+
+
+.sparkle-1 {
+    left: 15%;
+    --speed: 6s;
+}
+
+
+.sparkle-2 {
+    left: 25%;
+    --speed: 8s;
+    animation-delay: 2s;
+}
+
+
+.sparkle-3 {
+    left: 40%;
+    --speed: 7s;
+    animation-delay: 1s;
+}
+
+
+.sparkle-4 {
+    left: 55%;
+    --speed: 9s;
+    animation-delay: 3s;
+}
+
+
+.sparkle-5 {
+    left: 65%;
+    --speed: 6s;
+    animation-delay: 1.5s;
+}
+
+
+.sparkle-6 {
+    left: 75%;
+    --speed: 8s;
+    animation-delay: 4s;
+}
+
+
+.sparkle-7 {
+    left: 88%;
+    --speed: 7s;
+    animation-delay: 2.5s;
+}
+
+
+.sparkle-8 {
+    left: 5%;
+    --speed: 10s;
+    animation-delay: 5s;
+}
+
+
+@keyframes sparkleFall {
+
+    0% {
+
+        transform:
+            translateY(-50px)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+/* =========================
+   CALENDAR SCREEN
+========================= */
+
+#calendarScreen {
+    justify-content: flex-start;
+
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            #351026 0%,
+            #160711 45%,
+            #020102 100%
+        );
+}
+
+
+/* =========================
+   CALENDAR CARD
+========================= */
+
+.calendar-box {
+
+    position: relative;
+    z-index: 10;
+
+    width: 520px;
+    max-width: 88vw;
+
+    margin-left: 8vw;
+
+    padding: 32px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(20, 5, 15, 0.82);
+
+    border:
+        1px solid rgba(255, 140, 185, 0.45);
+
+    box-shadow:
+        0 0 30px rgba(255, 50, 140, 0.12),
+        inset 0 0 30px rgba(255, 100, 170, 0.04);
+
+    text-align: center;
+
+    backdrop-filter: blur(10px);
+
+    animation:
+        calendarAppear 1s ease;
+}
+
+@keyframes calendarAppear {
+
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================
+   CALENDAR HEADING
+========================= */
+
+.calendar-label {
+
+    color: #ff9dbc;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 10px;
+}
+
+.calendar-box h1 {
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 42px;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    text-shadow:
+        0 0 15px rgba(255, 130, 180, .35);
+}
+
+.calendar-box h1 span {
+
+    color: #ff82ad;
+}
+
+.calendar-info {
+
+    color: #cbaaba;
+
+    font-size: 14px;
+
+    margin: 10px 0 24px;
+}
+
+
+/* =========================
+   WEEK DAYS
+========================= */
+
+.weekdays {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    color: #ff8eb7;
+
+    font-size: 11px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   CALENDAR DAYS
+========================= */
+
+.days {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 6px;
+}
+
+.day {
+
+    height: 39px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #d8c2ce;
+
+    border-radius: 10px;
+
+    transition: .3s;
+}
+
+.day:hover {
+
+    background:
+        rgba(255, 100, 170, .08);
+
+    color: white;
+
+    transform: scale(1.08);
+}
+
+
+/* =========================
+   SPECIAL DATE — 17
+========================= */
+
+#specialDate {
+
+    width: 39px;
+    height: 39px;
+
+    justify-self: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffb5d0,
+            #ff5c9c 45%,
+            #a51e58 100%
+        );
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 12px #ff4f9a,
+        0 0 30px rgba(255, 31, 122, .55);
+
+    animation:
+        datePulse 1.6s infinite;
+
+    transition: .3s;
+}
+
+#specialDate:hover {
+
+    transform: scale(1.18);
+
+    box-shadow:
+        0 0 20px #ff4f9a,
+        0 0 50px #ff1f7a;
+}
+
+@keyframes datePulse {
+
+    0%, 100% {
+        box-shadow:
+            0 0 12px #ff4f9a,
+            0 0 25px rgba(255,31,122,.45);
+    }
+
+    50% {
+        box-shadow:
+            0 0 20px #ff4f9a,
+            0 0 45px rgba(255,31,122,.75);
+    }
+}
+
+
+/* =========================
+   CALENDAR MESSAGE
+========================= */
+
+.tap {
+
+    margin-top: 18px;
+
+    color: #bfa5b3;
+
+    font-size: 12px;
+
+    letter-spacing: .5px;
+}
+
+
+/* =========================
+   BALLOONS
+========================= */
+
+.balloon {
+
+    position: absolute;
+
+    bottom: -120px;
+
+    width: 52px;
+
+    height: 66px;
+
+    border-radius:
+        50%
+        50%
+        45%
+        45%;
+
+    z-index: 3;
+
+    animation:
+        rise 10s linear infinite;
+}
+
+
+/* Balloon shine */
+
+.balloon::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 10px;
+    left: 11px;
+
+    width: 13px;
+    height: 23px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.5);
+
+    transform: rotate(25deg);
+}
+
+
+/* Balloon knot */
+
+.balloon::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -8px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-left: 6px solid transparent;
+
+    border-right: 6px solid transparent;
+
+    border-top: 10px solid #ff70a8;
+}
+
+
+/* Balloon strings */
+
+.string {
+
+    position: absolute;
+
+    top: 100%;
+
+    left: 50%;
+
+    width: 1px;
+
+    height: 150px;
+
+    background:
+        rgba(255,190,215,.55);
+}
+
+
+/* Pink balloon */
+
+.pink {
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ffd6e5,
+            #ff4f9a 55%,
+            #96194d
+        );
+
+    box-shadow:
+        0 0 20px rgba(255,60,140,.35);
+}
+
+
+/* Purple balloon */
+
+.purple {
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #efd9ff,
+            #a45cff 55%,
+            #4d1b76
+        );
+
+    box-shadow:
+        0 0 20px rgba(160,80,255,.35);
+}
+
+
+/* White/pink balloon */
+
+.white {
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            white,
+            #ffb7d3 55%,
+            #b64470
+        );
+
+    box-shadow:
+        0 0 20px rgba(255,180,210,.35);
+}
+
+
+/* =========================
+   BALLOON POSITIONS
+========================= */
+
+.b1 {
+    left: 61%;
+    animation-delay: -1s;
+    animation-duration: 9s;
+}
+
+.b2 {
+    left: 71%;
+    animation-delay: -5s;
+    animation-duration: 11s;
+}
+
+.b3 {
+    left: 81%;
+    animation-delay: -8s;
+    animation-duration: 10s;
+}
+
+.b4 {
+    left: 91%;
+    animation-delay: -3s;
+    animation-duration: 12s;
+}
+
+
+/* =========================
+   BALLOON MOVEMENT
+========================= */
+
+@keyframes rise {
+
+    0% {
+
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(-5deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .9;
+    }
+
+    30% {
+
+        transform:
+            translateY(-30vh)
+            translateX(20px)
+            rotate(5deg);
+    }
+
+    55% {
+
+        transform:
+            translateY(-65vh)
+            translateX(-25px)
+            rotate(-5deg);
+    }
+
+    80% {
+
+        transform:
+            translateY(-95vh)
+            translateX(25px)
+            rotate(6deg);
+    }
+
+    100% {
+
+        transform:
+            translateY(-125vh)
+            translateX(-10px)
+            rotate(-4deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    #calendarScreen {
+        justify-content: center;
+    }
+
+    .calendar-box {
+
+        margin-left: 0;
+
+        width: 92vw;
+
+        padding: 24px;
+    }
+
+    .calendar-box h1 {
+        font-size: 35px;
+    }
+
+    .balloon {
+        width: 40px;
+        height: 52px;
+    }
+}
+/* =====================================
+   BIRTHDAY SCREEN
+===================================== */
+
+#birthdayScreen {
+
+    display: none;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #4a102d 0%,
+            #210817 40%,
+            #050105 100%
+        );
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/* =====================================
+   BIRTHDAY CONTENT
+===================================== */
+
+.birthday-content {
+
+    position: relative;
+
+    z-index: 10;
+
+    animation:
+        birthdayAppear 1.5s ease forwards;
+}
+
+
+@keyframes birthdayAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(.9);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =====================================
+   SMALL TITLE
+===================================== */
+
+.birthday-small {
+
+    color: #ff9fbe;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 18px;
+
+    text-shadow:
+        0 0 15px #ff4f9a;
+}
+
+
+/* =====================================
+   HAPPY BIRTHDAY
+===================================== */
+
+.birthday-content h1 {
+
+    margin: 0;
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(
+        55px,
+        8vw,
+        90px
+    );
+
+    line-height: .9;
+
+    font-style: italic;
+
+    text-shadow:
+        0 0 15px #ffb0ca,
+        0 0 35px #ff4f9a,
+        0 0 70px rgba(255,40,130,.5);
+}
+
+
+.birthday-content h1 span {
+
+    color: #ff86b2;
+}
+
+
+/* =====================================
+   CAKE
+===================================== */
+
+.cake {
+
+    font-size: 70px;
+
+    margin: 20px 0;
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(255,100,160,.7)
+        );
+
+    animation:
+        cakeFloat 2s ease-in-out infinite;
+}
+
+
+@keyframes cakeFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* =====================================
+   MESSAGE
+===================================== */
+
+.birthday-message {
+
+    color: #f4dce7;
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    margin: 5px 0;
+}
+
+
+.birthday-message strong {
+
+    color: #ff9fc0;
+
+    font-size: 23px;
+
+    text-shadow:
+        0 0 15px #ff4f9a;
+}
+
+
+.birthday-sub {
+
+    color: #bfa5b3;
+
+    font-size: 13px;
+
+    margin:
+        12px 0
+        25px;
+}
+
+
+/* =====================================
+   LETTER BUTTON
+===================================== */
+
+#letterButton {
+
+    padding:
+        14px
+        30px;
+
+    border:
+        1px solid #ff8fb7;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,80,150,.08);
+
+    color: #ffb2cb;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: .35s;
+
+    box-shadow:
+        0 0 15px
+        rgba(255,60,140,.15);
+}
+
+
+#letterButton:hover {
+
+    background: #ff79aa;
+
+    color: #190611;
+
+    transform:
+        translateY(-3px)
+        scale(1.05);
+
+    box-shadow:
+        0 0 25px #ff4f9a,
+        0 0 50px rgba(255,40,130,.5);
+}
+
+
+/* =====================================
+   BIRTHDAY SPARKLES
+===================================== */
+
+.birthday-sparkle {
+
+    position: absolute;
+
+    color: #ffd3e2;
+
+    font-size: 20px;
+
+    text-shadow:
+        0 0 15px #ff6da4;
+
+    animation:
+        sparkleMove 3s ease-in-out infinite;
+}
+
+
+.s1 {
+    left: 15%;
+    top: 25%;
+}
+
+.s2 {
+    left: 25%;
+    top: 70%;
+    animation-delay: .7s;
+}
+
+.s3 {
+    right: 18%;
+    top: 28%;
+    animation-delay: 1s;
+}
+
+.s4 {
+    right: 28%;
+    top: 70%;
+    animation-delay: 1.5s;
+}
+
+.s5 {
+    left: 50%;
+    top: 15%;
+    animation-delay: .4s;
+}
+
+
+@keyframes sparkleMove {
+
+    0%, 100% {
+
+        opacity: .3;
+
+        transform:
+            scale(.7)
+            rotate(0deg);
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.4)
+            rotate(90deg);
+    }
+}
+
+
+/* =====================================
+   FLOATING HEARTS
+===================================== */
+
+.birthday-heart {
+
+    position: absolute;
+
+    color: #ff8fb8;
+
+    font-size: 35px;
+
+    text-shadow:
+        0 0 15px #ff4f9a;
+
+    animation:
+        heartFloat 4s ease-in-out infinite;
+}
+
+
+.bh1 {
+    left: 12%;
+    bottom: 20%;
+}
+
+.bh2 {
+    left: 22%;
+    top: 18%;
+    animation-delay: .8s;
+}
+
+.bh3 {
+    right: 15%;
+    bottom: 22%;
+    animation-delay: 1.2s;
+}
+
+.bh4 {
+    right: 24%;
+    top: 18%;
+    animation-delay: 1.8s;
+}
+
+
+@keyframes heartFloat {
+
+    0%, 100% {
+
+        transform:
+            translateY(0)
+            rotate(-8deg);
+
+        opacity: .6;
+    }
+
+    50% {
+
+        transform:
+            translateY(-20px)
+            rotate(8deg);
+
+        opacity: 1;
+    }
+}
+/* =====================================
+   LETTER SCREEN
+===================================== */
+
+#letterScreen {
+
+    display: none;
+
+    position: relative;
+
+    overflow: hidden;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #48132f 0%,
+            #250817 42%,
+            #050105 100%
+        );
+}
+
+
+/* =====================================
+   LETTER CONTENT
+===================================== */
+
+.letter-content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: min(700px, 90vw);
+
+    animation:
+        letterAppear 1.2s ease;
+}
+
+@keyframes letterAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.letter-small {
+
+    color: #ff9dbc;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 12px;
+}
+
+
+.letter-content h1 {
+
+    margin: 0 0 30px;
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 48px;
+
+    font-style: italic;
+
+    font-weight: normal;
+
+    text-shadow:
+        0 0 15px #ff8fb8,
+        0 0 35px rgba(255,60,140,.5);
+}
+
+
+.letter-content h1 span {
+
+    color: #ff82ad;
+}
+
+
+/* =====================================
+   ENVELOPE
+===================================== */
+
+.envelope {
+
+    position: relative;
+
+    width: 270px;
+    height: 180px;
+
+    margin: 0 auto;
+
+    cursor: pointer;
+
+    perspective: 900px;
+
+    filter:
+        drop-shadow(
+            0 15px 30px
+            rgba(255,40,130,.3)
+        );
+
+    transition: .4s;
+}
+
+
+.envelope:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.03);
+}
+
+
+/* Back */
+
+.envelope-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ff9fbd,
+            #c93670
+        );
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 0 30px
+        rgba(255,70,145,.35);
+}
+
+
+/* Paper */
+
+.letter-paper {
+
+    position: absolute;
+
+    left: 15px;
+    right: 15px;
+
+    bottom: 15px;
+
+    height: 135px;
+
+    background:
+        linear-gradient(
+            #fff8fb,
+            #f8dce8
+        );
+
+    border-radius: 4px;
+
+    transition:
+        transform .9s ease;
+
+    z-index: 2;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,.25);
+}
+
+
+.paper-heart {
+
+    color: #df4b80;
+
+    font-size: 32px;
+
+    margin-top: 40px;
+}
+
+
+/* Front */
+
+.envelope-front {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 105px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ec6c99,
+            #b72861
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 55%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    z-index: 4;
+}
+
+
+/* Flap */
+
+.envelope-flap {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 105px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffabc5,
+            #d94779
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 75%,
+            100% 0
+        );
+
+    transform-origin: top;
+
+    transition:
+        transform .8s ease;
+
+    z-index: 5;
+}
+
+
+/* Heart seal */
+
+.envelope-heart {
+
+    position: absolute;
+
+    left: 50%;
+    top: 76px;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        #8e164a;
+
+    color: #ffd9e7;
+
+    font-size: 20px;
+
+    z-index: 6;
+
+    box-shadow:
+        0 0 15px
+        rgba(255,70,150,.7);
+
+    transition: .4s;
+}
+
+
+/* OPEN ENVELOPE */
+
+.envelope.open .envelope-flap {
+
+    transform:
+        rotateX(180deg);
+}
+
+
+.envelope.open .letter-paper {
+
+    transform:
+        translateY(-100px);
+}
+
+
+.envelope.open .envelope-heart {
+
+    opacity: 0;
+}
+
+
+/* =====================================
+   OPEN TEXT
+===================================== */
+
+.open-text {
+
+    color: #cdaaba;
+
+    font-size: 13px;
+
+    margin-top: 25px;
+
+    animation:
+        softPulse 2s infinite;
+}
+
+
+@keyframes softPulse {
+
+    0%, 100% {
+        opacity: .5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =====================================
+   MESSAGE
+===================================== */
+
+.message-box {
+
+    display: none;
+
+    margin: 45px auto 0;
+
+    width: min(620px, 88vw);
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,150,190,.25);
+
+    box-shadow:
+        0 0 40px
+        rgba(255,50,130,.1);
+
+    backdrop-filter: blur(8px);
+
+    animation:
+        messageAppear 1s ease;
+}
+
+
+@keyframes messageAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(.97);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+#typedMessage {
+
+    color: #f8e5ed;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    min-height: 120px;
+
+    text-align: left;
+
+    white-space: pre-line;
+}
+
+
+.signature {
+
+    display: none;
+
+    color: #cba4b5;
+
+    font-family: Georgia, serif;
+
+    font-style: italic;
+
+    margin-top: 25px;
+
+    line-height: 1.7;
+}
+
+
+.signature span {
+
+    color: #ff8eb6;
+
+    font-size: 20px;
+}
+
+
+/* =====================================
+   FINAL BUTTON
+===================================== */
+
+#finalButton {
+
+    display: none;
+
+    margin: 25px auto 0;
+
+    padding: 13px 28px;
+
+    border:
+        1px solid #ff8fb7;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,80,150,.08);
+
+    color: #ffb2cb;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    transition: .3s;
+}
+
+
+#finalButton:hover {
+
+    background: #ff79aa;
+
+    color: #190611;
+
+    box-shadow:
+        0 0 25px #ff4f9a;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =====================================
+   SPARKLES
+===================================== */
+
+.letter-sparkle {
+
+    position: absolute;
+
+    color: #ffd5e3;
+
+    font-size: 22px;
+
+    text-shadow:
+        0 0 15px #ff5c9e;
+
+    animation:
+        letterSparkle 3s infinite ease-in-out;
+}
+
+
+.ls1 {
+    left: 12%;
+    top: 20%;
+}
+
+.ls2 {
+    left: 22%;
+    bottom: 20%;
+    animation-delay: .8s;
+}
+
+.ls3 {
+    right: 15%;
+    top: 23%;
+    animation-delay: 1.2s;
+}
+
+.ls4 {
+    right: 22%;
+    bottom: 20%;
+    animation-delay: 1.7s;
+}
+
+
+@keyframes letterSparkle {
+
+    0%, 100% {
+
+        opacity: .25;
+
+        transform:
+            scale(.7)
+            rotate(0);
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.4)
+            rotate(90deg);
+    }
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width: 600px) {
+
+    .letter-content h1 {
+        font-size: 40px;
+    }
+
+    .envelope {
+
+        width: 220px;
+        height: 145px;
+    }
+
+    .letter-paper {
+        height: 110px;
+    }
+
+    .envelope-flap {
+        height: 85px;
+    }
+
+    .envelope-heart {
+        top: 62px;
+    }
+
+    #typedMessage {
+        font-size: 15px;
+    }
+}
+#musicButton {
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 150, 190, .5);
+
+    background: rgba(30, 5, 20, .7);
+
+    color: #ffb2cb;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    z-index: 999;
+
+    box-shadow:
+        0 0 15px rgba(255, 70, 150, .25);
+
+    transition: .3s;
+}
+
+#musicButton:hover {
+    transform: scale(1.1);
+
+    background: #ff70a8;
+
+    color: #18030d;
+
+    box-shadow:
+        0 0 25px #ff4f9a;
+}
